@@ -1,0 +1,186 @@
+######################################################################################################################################################################################################
+											        Apache ZooKeper 
+######################################################################################################################################################################################################
+
+
+
+
+
+######################################################################################################################################################################################################
+											Installing the Apache ZooKeeper 
+######################################################################################################################################################################################################
+
+
+######################################################################
+                          Requirments  		                     # 
+######################################################################
+
+# java -version                                                                                             # verify java installation                                          
+
+# sudo getent group sudo . 					                                            # verify if the hadoop user in superuser !
+
+
+
+
+######################################################################
+                          Download ZooKeeper   		             # 
+######################################################################
+
+# wget https://dlcdn.apache.org/zookeeper/zookeeper-3.8.3/apache-zookeeper-3.8.3-bin.tar.gz                 # Download binary version 
+# sudo tar -xvf apache-zookeeper-3.8.3-bin.tar.gz                                                           # extract the file 
+# sudo mv apache-zookeeper-3.8.3-bin zookeeper                                                              # rename the extracted file 
+# sudo chown -R hadoop:hadoop /usr/local/zookeeper                                                          # change the directory owner to hadoop 
+# cd /usr/local/zookeeper
+
+
+
+
+
+
+
+######################################################################################################################################################################################################
+											 Apache ZooKeeper Configuration
+######################################################################################################################################################################################################
+
+
+
+######################################################################
+                 zoo.cfg   	                                     # 
+######################################################################
+
+---- > The configuration below sets up ZooKeeper in standalone mode : 
+
+
+# cd /usr/local/zookeeper
+# mkdir data                                                         # to store kafka data (enbale space should be offered )
+# cd /usr/local/zookeeper/conf 
+# sudo gedit zoo.cfg                                                 # set the basic configuration 
+
+tickTime = 2000                                                      # The number of milliseconds of each tick.
+dataDir = /usr/local/zookeeper/data	                             # The directory where snapshots of the in-memory database and transaction log for updates are stored.
+clientPort = 2181		                                     # The port listening for client connections.
+initLimit = 5			                                     # The number of ticks that the initial synchronization phase can take.
+syncLimit = 2			                                     # The number of ticks that can pass between sending a request and getting an acknowledgement.
+
+
+
+
+
+
+
+######################################################################################################################################################################################################
+											 Creating a System Service File
+######################################################################################################################################################################################################
+
+
+# a service file that manage ZooKeeper .
+
+
+# sudo gedit /etc/systemd/system/zookeeper.service                     # Create a new zookeeper.service file
+
+# Paste the following content into the file :
+
+[Unit]
+Description=Zookeeper Daemon
+Documentation=http://zookeeper.apache.org
+Requires=network.target
+After=network.target
+
+[Service]    
+Type=forking
+WorkingDirectory=/usr/local/zookeeper
+User=hadoop
+Group=hadoop
+ExecStart=/usr/local/zookeeper/bin/zkServer.sh start /usr/local/zookeeper/conf/zoo.cfg
+ExecStop=/usr/local/zookeeper/bin/zkServer.sh stop /usr/local/zookeeper/conf/zoo.cfg
+ExecReload=/usr/local/zookeeper/bin/zkServer.sh restart /usr/local/zookeeper/conf/zoo.cfg
+TimeoutSec=30
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
+
+
+
+
+
+
+######################################################################################################################################################################################################
+											 Creating a System Service File
+######################################################################################################################################################################################################
+
+
+ 
+######################################################################
+                          Basic Commands   		             # 
+######################################################################
+
+---------> Starting ZooKeeper : 
+
+ 
+# sudo systemctl daemon-reload                                               # Reload the systemd service by running
+
+# sudo systemctl enable zookeeper                                            # enable ZooKeeper to start on boot:
+
+# sudo systemctl start zookeeper                                             # start the ZooKeeper service 
+
+# sudo systemctl status zookeeper                                            # systemctl status zookeeper
+
+# sudo systemctl stop zookeeper                                              # start the ZooKeeper service 
+
+
+
+
+---------> Check ZooKeeper  Status : 
+
+
+# systemctl status zookeeper                                            # systemctl status zookeeper
+
+
+######################################################################################################################################################################################################
+											 Testing Zookeeper
+######################################################################################################################################################################################################
+
+
+
+# telnet localhost 2181
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

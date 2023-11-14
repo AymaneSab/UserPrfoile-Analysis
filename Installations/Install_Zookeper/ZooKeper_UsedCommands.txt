@@ -1,0 +1,143 @@
+######################################################################################################################################################################################################
+											        Apache ZooKeper 
+######################################################################################################################################################################################################
+
+
+
+
+
+######################################################################################################################################################################################################
+											 Apache ZooKeeper  Commands 
+######################################################################################################################################################################################################
+
+
+
+ 
+
+
+######################################################################
+                          Basic Commands   		             # 
+######################################################################
+
+---------> Starting ZooKeeper : 
+
+ 
+# sudo systemctl daemon-reload                                               # Reload the systemd service by running
+
+# sudo systemctl enable zookeeper                                            # enable ZooKeeper to start on boot:
+
+# sudo systemctl start zookeeper                                             # start the ZooKeeper service 
+
+# sudo systemctl status zookeeper                                            # systemctl status zookeeper
+
+# sudo systemctl stop zookeeper                                              # start the ZooKeeper service 
+
+
+
+
+---------> Check ZooKeeper  Status : 
+
+
+# systemctl status zookeeper                                            # systemctl status zookeeper
+
+
+
+
+
+
+######################################################################
+                          Used Commands   		             # 
+######################################################################
+
+
+----- > Connect to a ZooKeeper server :
+
+# ./zkCli.sh -server localhost:4040
+ 
+
+----- > Create a ZNode: :
+
+# create /path "data"
+
+ 
+----- > Get the data of a ZNode: :
+
+# get /path
+
+
+----- > Delete a ZNode :
+
+# delete /path
+
+
+----- > List the children of a ZNode :
+
+# ls /path
+
+
+
+
+
+######################################################################                      
+	             Advanced Commands   		             # 
+######################################################################
+
+
+----- > Add an ACL (Access Control List) to a ZNode:
+
+# setAcl /path auth:username:password:permissions
+
+
+
+----- > Add a Digest ACL to a ZNode:
+
+# setAcl /path digest:username:password:permissions
+
+
+----- > Add an IP ACL to a ZNode:
+
+# setAcl /path ip:127.0.0.1:permissions
+
+
+
+----- > Get the ACL of a ZNode:
+
+
+# getAcl /path
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
