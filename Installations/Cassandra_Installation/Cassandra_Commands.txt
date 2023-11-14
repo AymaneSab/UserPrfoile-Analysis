@@ -1,0 +1,207 @@
+######################################################################################################################################################################################################
+											        Apache Cassandra 
+######################################################################################################################################################################################################
+
+
+
+
+
+######################################################################################################################################################################################################
+											Installing the Apache Distribution 
+######################################################################################################################################################################################################
+
+
+
+
+######################################################################
+           SystemCTL Commands            		  	     # 
+######################################################################
+
+-----> Rechargez la configuration systemd
+
+# sudo systemctl daemon-reload
+
+# sudo systemctl enable cassandra
+
+# sudo systemctl start cassandra
+
+# sudo systemctl status cassandra
+
+# sudo systemctl stop cassandra
+
+
+
+
+./cqlsh -u cassandra -p cassandra localhost;
+
+
+######################################################################
+                   Cassandra Roles               		     # 
+######################################################################
+
+------ > Create Role 
+
+# CREATE ROLE dataengineere WITH PASSWORD = 'AllahSave.1234/' AND LOGIN = true AND ACCESS TO DATACENTERS {'DC1', 'DC3'};
+
+------ > Create Role 
+
+# list_roles_statement ::= LIST ROLES [ OF role_name] [ NORECURSIVE ]
+# LIST ROLES;
+
+
+######################################################################
+                   Cassandra Users               		     # 
+######################################################################
+
+------ > sudo gedit /usr/local/Cassandra/cassandra/conf/cassandra.yaml
+
+1 Find and open 'cassandra.yaml' file on your computer.
+
+2 Find and delete 'authenticator: AllowAllAuthenticator' in the file.
+
+3 Replace it with 'authenticator: PasswordAuthenticator'
+
+4 Also, add this line : 'authorizer: CassandraAuthorizer '
+
+4 cqlsh -u cassandra -p cassandra localhost;
+
+
+------ > Create User 
+
+# CREATE USER IF NOT EXISTS aymane WITH PASSWORD 'AllahSave.1234/' SUPERUSER;
+
+------ > ALTER USER 
+
+# ALTER USER alice WITH PASSWORD 'PASSWORD_A';
+
+------ > DROP USER
+
+# drop_user_statement ::= DROP USER [ IF EXISTS ] role_name
+
+
+------ > LIST USERS
+
+# list_users_statement::= LIST USERS ;
+
+
+
+######################################################################
+           KeySpace Commands            		  	     # 
+######################################################################
+
+------> show actual cassandra keysapce : DESCRIBE KEYSPACES;
+
+------> Drop a cassandra keysapce : DROP KEYSPACE youcode;
+
+
+------> Create a Keyspace:
+
+CREATE KEYSPACE my_keyspace
+WITH replication = {
+    'class': 'SimpleStrategy',
+    'replication_factor': 3
+};
+
+------> Alter a Keyspace:
+
+ALTER KEYSPACE my_keyspace
+WITH replication = {
+    'class': 'NetworkTopologyStrategy',
+    'dc1': 3,
+    'dc2': 2
+};
+
+------> Drop a Keyspace:
+
+# DROP KEYSPACE youcode;
+
+
+------> Describe a Keyspace:
+
+# DESCRIBE KEYSPACE youcode;
+
+
+------> Truncate a Table within a Keyspace:
+
+
+# TRUNCATE my_keyspace.my_table;
+ 
+
+######################################################################
+          Data Control.                          		     # 
+######################################################################
+
+
+------> GRANT PERMISSION
+
+# grant_permission_statement ::= GRANT permissions ON resource TO role_name
+permissions ::= ALL [ PERMISSIONS ] | permission [ PERMISSION ]
+permission ::= CREATE | ALTER | DROP | SELECT | MODIFY | AUTHORIZE | DESCRIBE | EXECUTE
+resource ::=    ALL KEYSPACES
+                | KEYSPACE keyspace_name
+                | [ TABLE ] table_name
+                | ALL ROLES
+                | ROLE role_name
+                | ALL FUNCTIONS [ IN KEYSPACE keyspace_name ]
+                | FUNCTION function_name '(' [ cql_type( ',' cql_type )* ] ')'
+                | ALL MBEANS
+                | ( MBEAN | MBEANS ) string
+
+# GRANT SELECT ON ALL KEYSPACES TO aymane;
+
+
+
+------> LIST PERMISSIONS
+
+# LIST ALL PERMISSIONS OF aymane;
+
+------> Permissions
+
+# 
+
+------> Permissions
+
+#
+
+
+
+
+
+
+
+
+
+
+######################################################################
+                            Test Exemple                             # 
+###################################################################### 
+
+https://datastax.github.io/spark-cassandra-connector/ApiDocs/3.4.1/connector/com/datastax/index.html
+https://github.com/datastax/spark-cassandra-connector
+
+
+CREATE KEYSPACE test WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1 };
+CREATE TABLE test.words (word text PRIMARY KEY, count int);
+INSERT INTO test.words(word, count) VALUES ("and", 50);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
