@@ -1,0 +1,79 @@
+######################################################################################################################################################################################################
+											        Pyhton 
+######################################################################################################################################################################################################
+
+
+
+
+
+######################################################################################################################################################################################################
+											Installing the Packages
+######################################################################################################################################################################################################
+
+
+
+######################################################################
+                         Conda           		  	     # 
+######################################################################
+
+
+---------> Install pyspark: : 
+
+# conda install -c conda-forge pyspark
+
+
+---------> Install cassandra-driver for connecting to Apache Cassandra:
+
+# conda install -c conda-forge cassandra-driver
+
+
+---------> Install confluent-kafka for working with Apache Kafka and Confluent Platform:
+
+# conda install -c conda-forge python-confluent-kafka
+
+
+---------> Starting Cassandra : 
+
+# cd /usr/local/hadoop/Cassandra/cassandra/bin 
+
+
+---------> Starting Cassandra : 
+
+# cd /usr/local/hadoop/Cassandra/cassandra/bin 
+
+
+---------> Starting Cassandra : 
+
+# cd /usr/local/hadoop/Cassandra/cassandra/bin 
+
+
+---------> Starting Cassandra : 
+
+# cd /usr/local/hadoop/Cassandra/cassandra/bin 
+
+
+---------> Starting Cassandra : 
+
+# cd /usr/local/hadoop/Cassandra/cassandra/bin 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
