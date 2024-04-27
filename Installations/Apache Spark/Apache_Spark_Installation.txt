@@ -15,7 +15,7 @@
                           Requirments  		                     # 
 ######################################################################
 
-# sudo apt update                                                                                          # Update Ubuntu Machine                                          
+# sudo apt update                                                                          # Update Ubuntu Machine                                          
 
 # sudo apt install default-jdk					                                           # Java 
 
@@ -28,12 +28,14 @@
 
 
 # cd /usr/local
-# sudo wget https://archive.apache.org/dist/spark/spark-3.4.0/spark-3.4.0-bin-hadoop3.tgz   
-                                                                                                                # Download binary version 
-# sudo tar -xvf spark-3.4.0-bin-hadoop3.tgz                                                                      # extract the file 
-# sudo mv spark-3.4.0-bin-hadoop3  spark 
-                                                                                                                  # rename the extracted file 
-# sudo chown -R hadoop:hadoop /usr/local/spark
+
+# sudo wget https://archive.apache.org/dist/spark/spark-3.4.0/spark-3.4.0-bin-hadoop3.tgz                       # Download binary version 
+                                                                                                                
+# sudo tar -xvf spark-3.4.0-bin-hadoop3.tgz                                                                     # extract the file 
+
+# sudo mv spark-3.4.0-bin-hadoop3  spark                                                                        # Move the extracted folder to the spark created folder
+                                                                                                                
+# sudo chown -R hadoop:hadoop /usr/local/spark                                                                  # rename the extracted file 
 
 
 
